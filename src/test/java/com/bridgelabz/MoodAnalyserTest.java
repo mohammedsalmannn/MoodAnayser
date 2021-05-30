@@ -12,8 +12,10 @@ public class MoodAnalyserTest {
     public void testMoodAnalysis() {
         String mood = null;
         try {
+            ExpectedException exception = ExpectedException.none();
+            exception.expect(MoodAnalyserException.class);
             mood = moodAnalyser.analyseMood("sad");
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.assertEquals("sad", mood);
         }
@@ -28,7 +30,7 @@ public class MoodAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(MoodAnalyserException.class);
             mood = moodAnalyser.analyseMood("i am sad mood");
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.assertEquals("sad", mood);
         }
@@ -39,8 +41,10 @@ public class MoodAnalyserTest {
     public void TestCase2() {
         String mood = null;
         try {
+            ExpectedException exception = ExpectedException.none();
+            exception.expect(MoodAnalyserException.class);
             mood = moodAnalyser.analyseMood("i am in any mood");
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.assertEquals("Happy", mood);
         }
@@ -50,7 +54,7 @@ public class MoodAnalyserTest {
 
     @Test
     public void TestCase1Repete() {
-        String mood = null;
+        String mood = "sad";
         try {
             mood = moodAnalyser.MoodAnalyser("i am in sad");
         } catch (Exception e) {
@@ -63,8 +67,10 @@ public class MoodAnalyserTest {
     public void TestCase2Repete() {
         String mood = null;
         try {
+            ExpectedException exception = ExpectedException.none();
+            exception.expect(MoodAnalyserException.class);
             mood = moodAnalyser.MoodAnalyser(null);
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Assert.assertEquals("Happy", mood);
         }
@@ -72,11 +78,3 @@ public class MoodAnalyserTest {
     }
 
 }
-
-
-
-
-
-
-
-
